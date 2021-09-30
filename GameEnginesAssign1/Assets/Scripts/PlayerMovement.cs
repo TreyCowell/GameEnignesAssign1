@@ -3,8 +3,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
- public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 6.0F;
     public float jumpSpeed = 8.0F;
@@ -29,6 +30,12 @@ using UnityEngine;
             if (Input.GetButton("Jump"))
                 movementDirection.y = jumpSpeed;
         }
+
+        if (Input.GetKeyDown(KeyCode.Backspace))
+        {
+            SceneManager.LoadScene("Assign1Scene");
+        }
+
         movementDirection.y -= gravity * Time.deltaTime;
 
         controller.Move(movementDirection * Time.deltaTime);
